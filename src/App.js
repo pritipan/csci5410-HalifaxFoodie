@@ -1,13 +1,14 @@
-
-import {withAuthenticator,AmplifySignOut} from "@aws-amplify/ui-react"
+import MainRoutes from "./routes/routes";
+import { BrowserRouter as Router } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { withAuthenticator } from "@aws-amplify/ui-react";
 
 function App() {
-  
+
   return (
-    <div className="App">
-      <h1>Welcome, User</h1>
-      <AmplifySignOut/>
-    </div>
+    <Router>
+      <MainRoutes />
+    </Router>
   );
 }
 
