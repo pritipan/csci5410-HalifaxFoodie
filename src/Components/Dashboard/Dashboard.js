@@ -7,9 +7,9 @@ const Dashboard = () => {
         <div>
             <h1>Welcome, User</h1>
             <button onClick={async () => {
-
-                const a = await Auth.currentAuthenticatedUser()
-                console.log("A :", a)
+                Auth.currentUserPoolUser().then((obj) => {
+                    console.log("OBJ:", obj.attributes)
+                })
             }} >
                 GETTT User
             </button>
