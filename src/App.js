@@ -14,7 +14,8 @@ function App() {
         const userObj = {
           username: obj.username,
           email: obj?.attributes?.email,
-          email_verified: obj?.attributes?.phone_number,
+          email_verified: obj?.attributes?.email_verified,
+          phone_number: obj?.attributes?.phone_number,
           phone_number_verified: obj?.attributes?.phone_number_verified,
           id: obj?.attributes?.sub,
         }
@@ -22,7 +23,7 @@ function App() {
         setUserInfo(userObj)
         window.location.reload()
       })
-      
+
   }, [])
 
   return (
