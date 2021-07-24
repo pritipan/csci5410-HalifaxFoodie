@@ -1,5 +1,5 @@
 import { AmplifySignOut } from '@aws-amplify/ui-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import db from '../../cred/firebase'
 import { getUserInfo, setUserInfo } from '../../utils/AuthUtils'
 import "./Question.css"
@@ -8,6 +8,17 @@ const Question = () => {
 
     const user = getUserInfo()
     const [answer, setAnswer] = useState("")
+    const [dbUser, setDBUser] = useState()
+
+    useEffect(async () => {
+
+        const userRef = db.collection("userDetails")
+        const userData = await userRef.where('email', '==', user.email).get()
+        userData.forEach(doc => {
+            setDBUser(doc.data())
+        })
+
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,6 +67,7 @@ const Question = () => {
                     <button type="button"
                         onClick={() => {
                             localStorage.clear()
+                            window.location.reload()
                         }}>
                         Log Out
                     </button>
@@ -66,7 +78,7 @@ const Question = () => {
 
 
             <h2>
-                Enter your Security Questions:
+                {!dbUser?.answer && "Setup"}MFA
             </h2>
 
             <div>
