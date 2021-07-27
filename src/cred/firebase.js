@@ -21,15 +21,6 @@ const firebaseConfig = {
   appId: "1:745236031671:web:44b4a2536556874b7ec532"
 };
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyA1iJCe9l-N9zWTagvWfwZnFsRQRYtmtnM",
-//     authDomain: "vivek-halifaxfoodie.firebaseapp.com",
-//     projectId: "vivek-halifaxfoodie",
-//     storageBucket: "vivek-halifaxfoodie.appspot.com",
-//     messagingSenderId: "620165221839",
-//     appId: "1:620165221839:web:635012e62d6c1243ef96ba"
-//   };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();

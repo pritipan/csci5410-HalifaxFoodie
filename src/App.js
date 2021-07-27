@@ -5,6 +5,9 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { useEffect } from "react";
 import { getUserInfo, setUserInfo } from "./utils/AuthUtils";
 import { Auth } from "aws-amplify";
+// import './components/Style/Style.scss'
+import './Style/tailwind.css';
+
 
 function App() {
   useEffect(() => {
@@ -18,6 +21,7 @@ function App() {
           phone_number: obj?.attributes?.phone_number,
           phone_number_verified: obj?.attributes?.phone_number_verified,
           id: obj?.attributes?.sub,
+          userRole: "user",
         }
         userObj["isQuestion"] = true
         setUserInfo(userObj)

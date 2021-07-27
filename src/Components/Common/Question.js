@@ -49,6 +49,7 @@ const Question = () => {
         } else {
             if (retrivedUser.answer === answer) {
                 user["isQuestion"] = false
+                user["userRole"] = retrivedUser.userRole
                 setUserInfo(user)
                 window.location.reload()
             } else {
@@ -58,12 +59,19 @@ const Question = () => {
     }
 
     return (
-        <div className="content">
-            <div className="d-flex justify-content-between mb-3">
+        <div className="content bg-gray-200	p-5">
+            <div className="flex justify-between mb-3">
                 <div>
-                    Hello {user?.username}
+                    Hello {user?.username},
                 </div>
-                <div>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => {
+                        localStorage.clear()
+                        window.location.reload()
+                    }}>
+                    Log Out
+                </button>
+                {/* <div>
                     <button type="button"
                         onClick={() => {
                             localStorage.clear()
@@ -71,14 +79,14 @@ const Question = () => {
                         }}>
                         Log Out
                     </button>
-                </div>
+                </div> */}
             </div>
 
             {/* <AmplifySignOut /> */}
 
 
-            <h2>
-                {!dbUser?.answer && "Setup"}MFA
+            <h2 className="font-size-25 heading-title-text-color font-medium tracking-normal mb-0 cursor-pointer py-3">
+                {!dbUser?.answer ? "Please Setup" : "Please enter"} Security Question
             </h2>
 
             <div>
@@ -86,8 +94,9 @@ const Question = () => {
                     What was the first Car you bought ?
                 </div>
 
-                <div>
+                <div className="py-3">
                     <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={answer}
                         onChange={(e) => {
                             setAnswer(e.target.value)
@@ -96,9 +105,11 @@ const Question = () => {
                     />
                 </div>
 
-                <button type="button" onClick={(e) => {
-                    handleSubmit(e)
-                }}>
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    type="button" onClick={(e) => {
+                        handleSubmit(e)
+                    }}>
                     Submit
                 </button>
             </div>

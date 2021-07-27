@@ -8,6 +8,8 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "aws-amplify": "^4.2.1",
+    "aws-amplify-react": "^5.0.7",
+    "aws-sdk": "^2.955.0",
     "bootstrap": "^5.0.2",
     "firebase": "^8.3.1",
     "react": "^17.0.2",
@@ -39,5 +41,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
   }
 }
