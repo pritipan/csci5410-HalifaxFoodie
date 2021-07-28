@@ -40,6 +40,9 @@ const Header = () => {
                                 <a href="/placeOrder" className={window.location.pathname === "/placeOrder" ? `p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600` : "p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300"}>
                                     Place Order
                                 </a>
+                                <a href="/customerFeedback" className={window.location.pathname === "/customerFeedback" ? `p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600` : "p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300"}>
+                                    Food Reviews
+                                </a>
                             </>
                         }
 

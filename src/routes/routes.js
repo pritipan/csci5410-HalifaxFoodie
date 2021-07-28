@@ -9,6 +9,7 @@ import Header from "../Components/Header/Header";
 import Help from "../Components/Help/Help";
 import PlaceOrder from "../Components/PlaceOrder/PlaceOrder";
 import ViewOrders from "../Components/ViewOrders/ViewOrders";
+import CustomerReviews from "../Components/CustomerReviews/CustomerReviews"
 import Visualization from "../Components/Visualization/Visualization";
 import { getUserInfo } from "../utils/AuthUtils";
 
@@ -45,6 +46,8 @@ const MainRoutes = () => {
                         <RouteWrapper exact={true} path="/addItem" component={AddItem} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/help" component={Help} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/findSimilarity" component={FindSimilarity} layout={DefaultLayout} />
+                        <RouteWrapper exact={true} path="/help" component={Dashboard} layout={DefaultLayout} />
+                        <RouteWrapper exact={true} path="/customerFeedback" component={CustomerReviews} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/visualization" component={Visualization} layout={DefaultLayout} />
                     </>
                 )}
