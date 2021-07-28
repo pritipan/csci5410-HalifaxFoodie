@@ -6,6 +6,7 @@ import Question from "../Components/Common/Question";
 import Dashboard from "../Components/Dashboard/Dashboard";
 import FindSimilarity from "../Components/FindSimilarity/FindSimilarity";
 import Header from "../Components/Header/Header";
+import Help from "../Components/Help/Help";
 import PlaceOrder from "../Components/PlaceOrder/PlaceOrder";
 import ViewOrders from "../Components/ViewOrders/ViewOrders";
 import { getUserInfo } from "../utils/AuthUtils";
@@ -41,8 +42,8 @@ const MainRoutes = () => {
                         <RouteWrapper exact={true} path="/myOrders" component={ViewOrders} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/placeOrder" component={PlaceOrder} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/addItem" component={AddItem} layout={DefaultLayout} />
+                        <RouteWrapper exact={true} path="/help" component={Help} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/findSimilarity" component={FindSimilarity} layout={DefaultLayout} />
-                        <RouteWrapper exact={true} path="/help" component={Dashboard} layout={DefaultLayout} />
                     </>
                 )}
             </Suspense>

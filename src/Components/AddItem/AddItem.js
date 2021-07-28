@@ -8,14 +8,9 @@ const AddItem = () => {
     const [restaurant, setRestaurant] = useState("")
 
     const addItem = async (flag) => {
-        if (flag) {
-            const res = await axios.post('https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/item', {
-                item: name,
-                price: price,
-                restaurant: restaurant,
-            })
-        }
+
         alert("Item Added successfully")
+        const res = await axios.post(`https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/item?name=${name}&price=${price}&restaurants=${restaurant}`)
         // .then(function (response) {
         //     debugger
         // })
