@@ -9,19 +9,13 @@ const ViewOrders = () => {
 
     useEffect(() => {
 
-        axios.get('https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/orders')
+        axios.get(`https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/orders?customer=${user.username}`)
             .then(function (response) {
-                // handle success
                 setOrders(response.data.orders)
             })
             .catch(function (error) {
-                // handle error
                 console.log(error);
             })
-            .then(function () {
-                // always executed
-            });
-
     }, [])
 
     return (

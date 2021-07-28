@@ -25,21 +25,8 @@ const PlaceOrder = () => {
     }, [])
 
     const placeOrder = async (item, flag) => {
-        if (flag) {
-            const res = await axios.post('https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/order', {
-                item: item.name,
-                itemPrice: item.price,
-                restaurant: item.restaurants,
-                customer: user.username
-            })
-        }
+        const res = await axios.post(`https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/order?item=${item.name}&itemPrice=${item.price}&restaurant=${item.restaurants}&customer=${user.username}`)
         alert("Order placed successfully")
-        // .then(function (response) {
-        //     debugger
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
 
     }
 

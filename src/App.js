@@ -31,9 +31,11 @@ function App() {
   }, [])
 
   return (
-    <Router>
-      <MainRoutes />
-    </Router>
+    <>
+      <Router>
+        <MainRoutes />
+      </Router>
+    </>
   );
 }
 
