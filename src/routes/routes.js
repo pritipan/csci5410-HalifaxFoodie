@@ -46,7 +46,6 @@ const MainRoutes = () => {
                         <RouteWrapper exact={true} path="/addItem" component={AddItem} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/help" component={Help} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/findSimilarity" component={FindSimilarity} layout={DefaultLayout} />
-                        <RouteWrapper exact={true} path="/help" component={Dashboard} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/customerFeedback" component={CustomerReviews} layout={DefaultLayout} />
                         <RouteWrapper exact={true} path="/visualization" component={Visualization} layout={DefaultLayout} />
                     </>

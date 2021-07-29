@@ -13,7 +13,7 @@ const Help = () => {
 
     return (
         <div>
-            <LexChat
+            {/* <LexChat
                 botName="foodTracking"
                 IdentityPoolId="us-east-1:5bc03a82-7d05-43b3-89f1-558ec02cb4bd"
                 placeholder="Placeholder text"
@@ -22,8 +22,8 @@ const Help = () => {
                 height="430px"
                 region="us-east-1"
                 headerText="Chat with our awesome bot"
-            />
-            {/* <LexChat
+            /> */}
+            <LexChat
                 botName="HalifaxFoodie"
                 IdentityPoolId="us-east-1:490d8d9b-4877-4f91-a06d-aee20121e312"
                 placeholder="Placeholder text"
@@ -32,7 +32,7 @@ const Help = () => {
                 height="430px"
                 region="us-east-1"
                 headerText="Chat with our awesome bot"
-            /> */}
+            />
         </div>
     )
 }
