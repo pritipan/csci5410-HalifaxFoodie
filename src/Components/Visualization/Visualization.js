@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { getUserInfo } from '../../utils/AuthUtils'
+import React, { useEffect } from 'react'
+// import { getUserInfo } from '../../utils/AuthUtils'
 import ApexCharts from "apexcharts";
 
 const Visualization = () => {
 
-    const [ingredients, setIngredients] = useState("")
-    const user = getUserInfo()
+    // const [ingredients, setIngredients] = useState("")
+    // const user = getUserInfo()
 
     // const data = {
     //     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
