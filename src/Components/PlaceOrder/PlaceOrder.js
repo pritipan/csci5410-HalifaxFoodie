@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Col, Row } from 'react-bootstrap';
 import { getUserInfo } from '../../utils/AuthUtils';
 
 const PlaceOrder = () => {
@@ -37,30 +38,33 @@ const PlaceOrder = () => {
                 Items
             </h1>
 
-            <div className="flex">
+            <Row>
+
                 {items?.map((item) => {
                     return (
-                        <div class="p-10">
-                            <div class="w-96 m-2 h-96 rounded shadow-2xl justify-around bg-yellow-400 flex flex-col border-box p-4">
-                                <p class="text-yellow-800 uppercase text-sm">{item.restaurants}</p>
-                                <p class="text-2xl font-bold uppercase my-4">{item.name}</p>
-                                <p class="text-sm uppercase text-gray-900">Price :{item.price}</p>
+                        <Col md={4}>
+                            <div class="p-10">
+                                <div class="w-96 m-2 h-96 rounded shadow-2xl justify-around bg-yellow-400 flex flex-col border-box p-4">
+                                    <p class="text-yellow-800 uppercase text-sm">{item.restaurants}</p>
+                                    <p class="text-2xl font-bold uppercase my-4">{item.name}</p>
+                                    <p class="text-sm uppercase text-gray-900">Price :{item.price}</p>
 
-                                <div class="flex flex-row">
-                                    <button class="bg-yellow-700 px-4 py-2 rounded uppercase font-bold text-sm text-white"
-                                        onClick={() => {
-                                            placeOrder(item, false)
-                                        }}
-                                    >
-                                        Order Now
-                                    </button>
+                                    <div class="flex flex-row">
+                                        <button class="bg-yellow-700 px-4 py-2 rounded uppercase font-bold text-sm text-white"
+                                            onClick={() => {
+                                                placeOrder(item, false)
+                                            }}
+                                        >
+                                            Order Now
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Col>
                     )
                 })}
-            </div>
 
+            </Row>
 
         </div>
 

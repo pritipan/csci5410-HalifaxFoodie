@@ -11,7 +11,7 @@ const ViewOrders = () => {
 
         axios.get(`https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/orders?customer=${user.username}`)
             .then(function (response) {
-                setOrders(response.data.orders)
+                setOrders(response.data.orders.filter(obj => obj.customer === user.username))
             })
             .catch(function (error) {
                 console.log(error);
