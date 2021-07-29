@@ -16,7 +16,7 @@ function CustomerReviews() {
 
   useEffect(async () => {
 
-    const wordlCloudURL =  'http://localhost:8081/reviews/getWordCloudData';
+    const wordlCloudURL =  'https://wordcloud-jg6nylgbna-et.a.run.app/reviews/getWordCloudData';
     axios.get(wordlCloudURL).then((repos) =>{
       const wordCloudData = repos.data;
       var options = {
@@ -24,7 +24,7 @@ function CustomerReviews() {
         url: 'https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud',
         headers: {
           'content-type': 'application/json',
-          'x-rapidapi-key': 'e431dd7fdfmshd3726113c399fe8p1e9deejsn79afd24059bc',
+          'x-rapidapi-key': 'c0e22fb0cfmsh299324230ccf431p152b06jsn289fa0278ef3',
           'x-rapidapi-host': 'textvis-word-cloud-v1.p.rapidapi.com'
         },
         data: {
@@ -44,8 +44,8 @@ function CustomerReviews() {
        var textWD = response.data;
         var img = document.getElementById("wordCloud");
         img.src = textWD;
-        img.height = 1000;
-        img.width = 1000;
+        img.height = 800;
+        img.width = 800;
 
     });
 
@@ -60,13 +60,13 @@ function CustomerReviews() {
 
     var submitFeedback = {
       method: 'POST',
-      url: 'http://localhost:8081/reviews/submitreviews',
+      url: 'https://wordcloud-jg6nylgbna-et.a.run.app/reviews/submitreviews',
       headers: {
         'content-type': 'application/json'
       },
       data: {
-        review: event.target.reviewData.value,
-        foodItemName: event.target.cuisineName.value,
+        review: event.target.review.value,
+        foodItemName: event.target.foodItemName.value,
         restaurantName: event.target.restaurantName.value
       } 
     };
@@ -113,11 +113,10 @@ function CustomerReviews() {
                     <Form.Label>Food Item Name</Form.Label>
                     <Form.Control
                       type="input"
-                      name="cusineName"
+                      name="foodItemName"
                       placeholder="Enter the food item name"
                       required
                       minLength="5"
-                      onChange=""
                     />
                   </Form.Group>
                   <Form.Group controlId="textFeedback">
@@ -126,10 +125,9 @@ function CustomerReviews() {
                       as="textarea"
                       rows={3}
                       minLength="5"
-                      name="reviewData"
-                      placeholder="enter feedback"
+                      name="review"
+                      placeholder="Enter your review"
                       required
-                      onChange=""
                     />
                   </Form.Group>
                   <Button
