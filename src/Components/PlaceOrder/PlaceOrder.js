@@ -26,7 +26,7 @@ const PlaceOrder = () => {
     }, [])
 
     const placeOrder = async (item, flag) => {
-        const res = await axios.post(`https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/order?item=${item.name}&itemPrice=${item.price}&restaurant=${item.restaurants}&customer=${user.username}`)
+        await axios.post(`https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/order?item=${item.name}&itemPrice=${item.price}&restaurant=${item.restaurants}&customer=${user.username}`)
         alert("Order placed successfully")
 
     }
@@ -47,7 +47,7 @@ const PlaceOrder = () => {
                                 <div class="w-96 m-2 h-96 rounded shadow-2xl justify-around bg-yellow-400 flex flex-col border-box p-4">
                                     <p class="text-yellow-800 uppercase text-sm">{item.restaurants}</p>
                                     <p class="text-2xl font-bold uppercase my-4">{item.name}</p>
-                                    <p class="text-sm uppercase text-gray-900">Price :{item.price}</p>
+                                    <p class="text-sm uppercase text-gray-900">Price : {item.price}</p>
 
                                     <div class="flex flex-row">
                                         <button class="bg-yellow-700 px-4 py-2 rounded uppercase font-bold text-sm text-white"

@@ -9,7 +9,7 @@ const ViewOrders = () => {
 
     useEffect(() => {
 
-        axios.get(`https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/orders?customer=${user.username}`)
+        axios.get(`https://h7khlrq7i1.execute-api.us-east-1.amazonaws.com/prod/orders?customer=${user?.username}`)
             .then(function (response) {
                 setOrders(response.data.orders.filter(obj => obj.customer === user.username))
             })

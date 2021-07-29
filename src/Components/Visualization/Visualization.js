@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { getUserInfo } from '../../utils/AuthUtils'
+import React, { useEffect } from 'react'
+// import { getUserInfo } from '../../utils/AuthUtils'
 import ApexCharts from "apexcharts";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
