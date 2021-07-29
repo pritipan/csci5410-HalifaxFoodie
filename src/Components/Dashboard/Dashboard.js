@@ -14,10 +14,7 @@ const Dashboard = () => {
           restaurantname: "Priti's Kitchen",
           title: "Best Indian Cuisine",
           message: "Enjoy the Indian comfort homely food",
-        },
-        { _id: 2, restaurantname: "Burger King", title: "Find the best burgers in the town here", message: "Find the best burgers in the town here" },
-        { _id: 3, restaurantname: "Pizza Place", title: "Find the best pizza in the town here", message: "Find the best pizza in the town here" },
-        { _id: 4, restaurantname: "Country Kitchen", title: "Find the best continental in the town here", message: "Find the best continental in the town here" }
+        }
       ];
 
     const user = getUserInfo()
@@ -27,20 +24,28 @@ const Dashboard = () => {
       <Container>
         <Row className="justify-content-md-center">
           {restaurantMap.map((restaurant) => (
-            <Col xs lg="3" md="4">
+            <Col xs lg="9" md="1">
               <Card className="mb-3" key={restaurant._id} id={restaurant._id}>
-                <Card.Img
-                  variant="top"
-                  src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
-                />
-                <Card.Body>
-                  <Card.Title>{restaurant.restaurantname}</Card.Title>
-                  <Card.Text>{restaurant.message}</Card.Text>
-                  <Button variant="primary">Food Menu</Button>
+              <Card.Body>
+                  <Card.Title className="lead">Hello Foodies ! Welcome to Halifax Foodie, your one stop solution for all your cravings !</Card.Title>
+                  {/* <Card.Text>{restaurant.message}</Card.Text>
+                  <Button variant="primary">Food Menu</Button> */}
                 </Card.Body>
+                <Card.Img
+                 style={{ width: '100%', height: 600 }}
+                  variant="top"
+                  src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80"
+                />
+                
               </Card>
             </Col>
           ))}
+        </Row>
+        <Row>
+        <Col xs lg="9" md="1"></Col>
+        </Row>
+        <Row>
+        <Col xs lg="9" md="1"></Col>
         </Row>
       </Container>
     </div>
