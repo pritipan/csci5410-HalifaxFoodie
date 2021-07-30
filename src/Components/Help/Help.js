@@ -12,49 +12,43 @@ const Help = () => {
     //     region: "us-east-1"
     // }
     // AWS.config.update(SESConfig);
-    const [text, setText] = useState([])
+    const [text, setText] = useState(null)
     const [receivedtext, setReceivedText] = useState([])
     const user = getUserInfo()
 
-    useEffect(async () => {
+    useEffect(() => {
 
-        // setInterval(async () => {
-        await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/receiveMessage', {
-            subscriptionId: 'user-chat'
-        })
-            .then(function (response) {
-                console.log("data", response);
-                setReceivedText(response?.data?.message || [])
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        // }, 15000);
+    const interval = setInterval(() => {
+        receiveMessage()
+        }, 5000);
+    return () => clearInterval(interval)
 
     }, [])
 
+    const receiveMessage = async () => {
+        const userInfo = JSON.parse(localStorage.getItem("userinfo"));
+        const {data} = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/receiveMessage', {
+            subscriptionId: 'user-chat'
+        }) 
+        if(data.message) {
+            const msg = JSON.parse(data.message);
+            if(msg.userId !== userInfo.username) {
+                setReceivedText((oldMsg) => [...oldMsg, msg.text]);
+            }
+        }
+    }
+
     const sendText = async (item, flag) => {
-        await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/sendMessage', {
-            "message": text,
+        if(text === null || text === "") {
+            return
+        }
+        const userInfo = JSON.parse(localStorage.getItem("userinfo"));
+        
+        const {data} = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/sendMessage', {
+            "message": {userId: userInfo.username, text},
             "topic": "live-chat"
         })
-            .then(function (response) {
-                console.log("data", response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-        
-        await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/receiveMessage', {
-            subscriptionId: 'user-chat'
-        })
-            .then(function (response) {
-                response?.data?.message && setReceivedText((oldArray) => [...oldArray, response?.data?.message])
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        setReceivedText((oldText) => [...oldText, text]);
     }
 
 
