@@ -8,8 +8,9 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY . /app
-RUN npm install --silent
-RUN npm install react-scripts@3.4.0 -g --silent
+RUN npm install
+# RUN npm install react-scripts@3.4.0 -g --silent
 RUN npm run build
+EXPOSE 8080
 
 CMD ["npm", "start"]
