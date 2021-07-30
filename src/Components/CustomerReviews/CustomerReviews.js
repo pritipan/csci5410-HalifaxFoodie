@@ -57,7 +57,6 @@ function CustomerReviews() {
 
 
   const submitReview = event => {
-    event.preventDefault()
     var submitFeedback = {
       method: 'POST',
       url: 'https://wordcloud-jg6nylgbna-et.a.run.app/reviews/submitreviews',
