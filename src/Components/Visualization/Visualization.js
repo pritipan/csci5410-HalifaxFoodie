@@ -8,19 +8,19 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 const Visualization = () => {
-    return (
+  return (
     <div>
-        <Row>
-          <Col>
-            <div>
-              <iframe
-                 width="1600" height="700"
-                src="https://datastudio.google.com/embed/reporting/7d662818-eea1-4a57-b2c4-f8093862fd7e/page/WjlWC"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </Col>
-        </Row>
+      <Row>
+        <Col>
+          <div>
+            <iframe
+              width="1600" height="700"
+              src="https://datastudio.google.com/embed/reporting/7d662818-eea1-4a57-b2c4-f8093862fd7e/page/WjlWC"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 }
