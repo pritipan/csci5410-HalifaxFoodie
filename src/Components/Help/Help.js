@@ -90,21 +90,44 @@ const Help = () => {
                     Send
                 </button>
 
-                <label class="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Message recieved :
-                </label>
+                <Row>
+                    <Col md={3}>
+                        <label class="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                            Message sent :
+                        </label>
+                    </Col>
+                    <Col md={9}>
+                        <label class="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                            Message received :
+                        </label>
+                    </Col>
+                </Row>
                 <Row>
                     {receivedtext?.map((t, index) => {
                         return (
                             // <p class={`block ${index % 2 === 0 && "ml-5"} tracking-wide text-gray-700 text-xs font-bold mb-2`} for="grid-first-name">
                             // </p>
                             <>
-                                <Col md={3}>
-                                    {index % 2 !== 0 && t}
-                                </Col>
-                                <Col md={3}>
-                                    {index % 2 === 0 && t}
-                                </Col>
+                                {index % 2 !== 0
+                                    ?
+                                    <>
+                                        <Col md={3}>
+                                            {user.userRole === "restaurant" && t}
+                                        </Col>
+                                        <Col md={9}>
+                                            {user.userRole === "user" && t}
+                                        </Col>
+                                    </>
+                                    :
+                                    <>
+                                        <Col md={3}>
+                                            {user.userRole === "user" && t}
+                                        </Col>
+                                        <Col md={9}>
+                                            {user.userRole === "restaurant" && t}
+                                        </Col>
+                                    </>
+                                }
                             </>
                         )
                     })}
@@ -131,7 +154,7 @@ const Help = () => {
                 backgroundColor="#FFFFFF"
                 height="430px"
                 region="us-east-1"
-                headerText="Chat bot"
+                headerText="Chat with us!"
             />
         </div>
     )
