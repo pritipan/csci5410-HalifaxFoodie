@@ -131,7 +131,7 @@ const Help = () => {
                 backgroundColor="#FFFFFF"
                 height="430px"
                 region="us-east-1"
-                headerText="Chat with our awesome bot"
+                headerText="Chat bot"
             />
         </div>
     )
