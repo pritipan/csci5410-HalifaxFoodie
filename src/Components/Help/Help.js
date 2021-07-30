@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Col, Row } from 'react-bootstrap';
 import LexChat from "react-lex";
 import { getUserInfo } from '../../utils/AuthUtils';
 // const AWS = require('aws-sdk');
@@ -14,38 +15,40 @@ const Help = () => {
     // AWS.config.update(SESConfig);
     const [text, setText] = useState(null)
     const [receivedtext, setReceivedText] = useState([])
+    const [receivedtextRestaurant, setReceivedTextRestaurant] = useState([])
     const user = getUserInfo()
 
     useEffect(() => {
 
-    const interval = setInterval(() => {
-        receiveMessage()
-        }, 5000);
-    return () => clearInterval(interval)
+        const interval = setInterval(() => {
+            receiveMessage()
+        }, 1000);
+        return () => clearInterval(interval)
 
     }, [])
 
     const receiveMessage = async () => {
         const userInfo = JSON.parse(localStorage.getItem("userinfo"));
-        const {data} = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/receiveMessage', {
-            subscriptionId: 'user-chat'
-        }) 
-        if(data.message) {
+        const { data } = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/receiveMessage', {
+            subscriptionId: user.userRole === "restaurant" ? "live-chat-sub" : "user-chat"
+            // subscriptionId: "user-chat"
+        })
+        if (data.message) {
             const msg = JSON.parse(data.message);
-            if(msg.userId !== userInfo.username) {
+            if (msg.userId !== userInfo.username) {
                 setReceivedText((oldMsg) => [...oldMsg, msg.text]);
             }
         }
     }
 
     const sendText = async (item, flag) => {
-        if(text === null || text === "") {
+        if (text === null || text === "") {
             return
         }
         const userInfo = JSON.parse(localStorage.getItem("userinfo"));
-        
-        const {data} = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/sendMessage', {
-            "message": {userId: userInfo.username, text},
+
+        const { data } = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/sendMessage', {
+            "message": { userId: userInfo.username, text },
             "topic": "live-chat"
         })
         setReceivedText((oldText) => [...oldText, text]);
@@ -90,13 +93,22 @@ const Help = () => {
                 <label class="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Message recieved :
                 </label>
-                {receivedtext?.map((t) => {
-                    return (
-                        <p class="block  tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            {t}
-                        </p>
-                    )
-                })}
+                <Row>
+                    {receivedtext?.map((t, index) => {
+                        return (
+                            // <p class={`block ${index % 2 === 0 && "ml-5"} tracking-wide text-gray-700 text-xs font-bold mb-2`} for="grid-first-name">
+                            // </p>
+                            <>
+                                <Col md={3}>
+                                    {index % 2 !== 0 && t}
+                                </Col>
+                                <Col md={3}>
+                                    {index % 2 === 0 && t}
+                                </Col>
+                            </>
+                        )
+                    })}
+                </Row>
 
                 {/* </form> */}
             </div>
