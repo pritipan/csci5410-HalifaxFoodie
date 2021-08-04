@@ -29,7 +29,7 @@ const Help = () => {
 
     const receiveMessage = async () => {
         const userInfo = JSON.parse(localStorage.getItem("userinfo"));
-        const { data } = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/receiveMessage', {
+        const { data } = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/receive', {
             subscriptionId: user.userRole === "restaurant" ? "live-chat-sub" : "user-chat"
             // subscriptionId: "user-chat"
         })
@@ -47,7 +47,7 @@ const Help = () => {
         }
         const userInfo = JSON.parse(localStorage.getItem("userinfo"));
 
-        const { data } = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/sendMessage', {
+        const { data } = await axios.post('https://live-chat-xo7rlc2vga-ue.a.run.app/send', {
             "message": { userId: userInfo.username, text },
             "topic": "live-chat"
         })
@@ -147,8 +147,8 @@ const Help = () => {
                 headerText="Chat with our awesome bot"
             /> */}
             <LexChat
-                botName="HalifaxFoodie"
-                IdentityPoolId="us-east-1:490d8d9b-4877-4f91-a06d-aee20121e312"
+                botName="track-order-chatbot"
+                IdentityPoolId="us-east-1:5bc03a82-7d05-43b3-89f1-558ec02cb4bd"
                 placeholder="Placeholder text"
                 style={{ position: 'absolute' }}
                 backgroundColor="#FFFFFF"
